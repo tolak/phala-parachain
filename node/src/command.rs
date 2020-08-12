@@ -54,6 +54,15 @@ impl SubstrateCli for Cli {
 			"staging" => Ok(Box::new(chain_spec::staging_test_net(
 				self.run.parachain_id.unwrap_or(200).into(),
 			))),
+			"tick" => Ok(Box::new(chain_spec::ChainSpec::from_json_bytes(
+				&include_bytes!("../res/tick.json")[..],
+			)?)),
+			"trick" => Ok(Box::new(chain_spec::ChainSpec::from_json_bytes(
+				&include_bytes!("../res/trick.json")[..],
+			)?)),
+			"track" => Ok(Box::new(chain_spec::ChainSpec::from_json_bytes(
+				&include_bytes!("../res/track.json")[..],
+			)?)),
 			"" => Ok(Box::new(chain_spec::get_chain_spec(
 				self.run.parachain_id.unwrap_or(200).into(),
 			))),
